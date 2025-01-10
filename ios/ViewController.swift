@@ -478,18 +478,20 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         self.manualView = manualView
         
         // manualView를 화면 가운데에 배치
+        let deviceWidth: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 250 : 300
+
         NSLayoutConstraint.activate([
             manualView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             manualView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            manualView.widthAnchor.constraint(equalToConstant: 300),
-            manualView.heightAnchor.constraint(equalToConstant: 400)
+            manualView.widthAnchor.constraint(equalToConstant: deviceWidth),
+            manualView.heightAnchor.constraint(lessThanOrEqualToConstant: 400)
         ])
     
         let verticalStack = UIStackView()
         verticalStack.axis = .vertical
         verticalStack.alignment = .fill
         verticalStack.distribution = .equalSpacing
-        verticalStack.spacing = 20
+        verticalStack.spacing = 30
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
         
         manualView.addSubview(verticalStack)
@@ -1372,21 +1374,24 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         fileMenuChildren.append(UIAction(title: "Save", image: UIImage(systemName: "square.and.arrow.down"), attributes: actionSaveEnabled ? [] : .disabled, state: .off, handler: { _ in
             self.save()
         }))
+        fileMenuChildren.append(UIAction(title: "Export (.ply)", image: UIImage(systemName: "square.and.arrow.up"), attributes: actionSaveEnabled ? [] : .disabled, state: .off, handler: { _ in
+            self.exportOBJPLY()
+        }))
         
-        if(actionOptimizeEnabled) {
-            fileMenuChildren.append(optimizeMenu)
-        }
-        else {
-            fileMenuChildren.append(UIAction(title: "Optimize...", attributes: .disabled, state: .off, handler: { _ in
-            }))
-        }
-        if(actionExportEnabled) {
-            fileMenuChildren.append(exportMenu)
-        }
-        else {
-            fileMenuChildren.append(UIAction(title: "Assemble...", attributes: .disabled, state: .off, handler: { _ in
-            }))
-        }
+//        if(actionOptimizeEnabled) {
+//            fileMenuChildren.append(optimizeMenu)
+//        }
+//        else {
+//            fileMenuChildren.append(UIAction(title: "Optimize...", attributes: .disabled, state: .off, handler: { _ in
+//            }))
+//        }
+//        if(actionExportEnabled) {
+//            fileMenuChildren.append(exportMenu)
+//        }
+//        else {
+//            fileMenuChildren.append(UIAction(title: "Assemble...", attributes: .disabled, state: .off, handler: { _ in
+//            }))
+//        }
         
         //MARK: UI - File menu Tab
         let fileMenu = UIMenu(title: "File", options: .displayInline, children: fileMenuChildren)
@@ -1399,24 +1404,24 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
 
                 if UIApplication.shared.canOpenURL(settingsUrl) {
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
+                        print("Settings opened: \(success)")
                     })
                 }
             }),
-            UIAction(title: "Restore All Default Settings", attributes: actionSettingsEnabled ? [] : .disabled, state: .off, handler: { _ in
-                
-                let ac = UIAlertController(title: "Reset All Default Settings", message: "Do you want to reset all settings to default?", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                    let notificationCenter = NotificationCenter.default
-                    notificationCenter.removeObserver(self)
-                    UserDefaults.standard.reset()
-                    self.registerSettingsBundle()
-                    self.updateDisplayFromDefaults();
-                    notificationCenter.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
-                }))
-                ac.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-                self.present(ac, animated: true)
-             })
+//            UIAction(title: "Restore All Default Settings", attributes: actionSettingsEnabled ? [] : .disabled, state: .off, handler: { _ in
+//                
+//                let ac = UIAlertController(title: "Reset All Default Settings", message: "Do you want to reset all settings to default?", preferredStyle: .alert)
+//                ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+//                    let notificationCenter = NotificationCenter.default
+//                    notificationCenter.removeObserver(self)
+//                    UserDefaults.standard.reset()
+//                    self.registerSettingsBundle()
+//                    self.updateDisplayFromDefaults();
+//                    notificationCenter.addObserver(self, selector: #selector(self.defaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+//                }))
+//                ac.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//                self.present(ac, animated: true)
+//             })
         ])
 
         menuButton.menu = UIMenu(title: "", children: [fileMenu, settingsMenu])
@@ -1451,16 +1456,16 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
             })
         ])
 
-        let DebugMenu = UIMenu(title: "Debug", options: .displayInline, children: [
-            UIAction(title: "Debug", image: debugShown ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle"), attributes: (self.mState != .STATE_WELCOME) ? [] : .disabled, handler: { _ in
-                self.debugShown = !self.debugShown
-                self.statusShown = !self.statusShown
-                self.TouchAction(true)
-            })
-        ])
+//        let DebugMenu = UIMenu(title: "Debug", options: .displayInline, children: [
+//            UIAction(title: "Debug", image: debugShown ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle"), attributes: (self.mState != .STATE_WELCOME) ? [] : .disabled, handler: { _ in
+//                self.debugShown = !self.debugShown
+//                self.statusShown = !self.statusShown
+//                self.TouchAction(true)
+//            })
+//        ])
 
         var viewMenuChildren: [UIMenuElement] = []
-        viewMenuChildren.append(DebugMenu)
+//        viewMenuChildren.append(DebugMenu)
         viewMenuChildren.append(cameraMenu)
         viewButton.menu = UIMenu(title: "", children: viewMenuChildren)
         viewButton.addTarget(self, action: #selector(ViewController.menuOpened(_:)), for: .menuActionTriggered)
@@ -2790,7 +2795,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
                         if let csvData = self.readCSV(fileName: csvFileName, name: name) {
                             let volume = csvData.volume
                             DispatchQueue.main.async {
-                                self.titleContent.text = "Volume : \(volume) m³"
+                                self.titleContent.text = "Volume: \(volume) m³"
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -2883,7 +2888,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
     func exportOBJPLY()
     {
         //Step : 1
-        let alert = UIAlertController(title: "Export Scan", message: "Model Name:", preferredStyle: .alert )
+        let alert = UIAlertController(title: "Export Scan", message: "Database Name (*.ply)", preferredStyle: .alert )
         //Step : 2
         let save = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
@@ -3051,7 +3056,7 @@ class ViewController: GLKViewController, ARSessionDelegate, RTABMapObserver, UIP
         if databases.isEmpty {
             return
         }
-        let alertController = UIAlertController(title: "Library", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Select Data", message: nil, preferredStyle: .alert)
         let customView = VerticalScrollerView()
         customView.dataSource = self
         customView.delegate = self
@@ -3445,7 +3450,7 @@ extension UserDefaults {
         let defaults = UserDefaults.standard
         defaults.dictionaryRepresentation().keys.forEach(defaults.removeObject(forKey:))
         
-        setDefaultsFromSettingsBundle()
+        setDefaultsFromSettings()
     }
 }
 

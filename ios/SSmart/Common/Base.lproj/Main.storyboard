@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23091" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zah-iI-EPt">
-    <device id="iPad13_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23079"/>
@@ -15,17 +15,17 @@
             <objects>
                 <glkViewController storyboardIdentifier="scanScene" preferredFramesPerSecond="30" id="zah-iI-EPt" customClass="ViewController" customModule="SlashScan" customModuleProvider="target" sceneMemberID="viewController">
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" drawableDepthFormat="24" enableSetNeedsDisplay="NO" id="sqF-4e-2HU">
-                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kPv-DO-hpd">
-                                <rect key="frame" x="942" y="488" width="80" height="400"/>
+                                <rect key="frame" x="313" y="251" width="70" height="350"/>
                                 <subviews>
                                     <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-Ru-yPg" userLabel="StopButton">
-                                        <rect key="frame" x="0.0" y="0.5" width="80" height="79"/>
+                                        <rect key="frame" x="0.0" y="0.6666666666666643" width="70" height="68.666666666666686"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="g9J-0P-CmQ"/>
-                                            <constraint firstAttribute="width" constant="80" id="m06-eJ-dIn"/>
+                                            <constraint firstAttribute="height" constant="70" id="g9J-0P-CmQ"/>
+                                            <constraint firstAttribute="width" constant="70" id="m06-eJ-dIn"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
@@ -42,10 +42,10 @@
                                         </connections>
                                     </button>
                                     <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHw-ZP-gtj" userLabel="StartButton">
-                                        <rect key="frame" x="0.0" y="80.5" width="80" height="79"/>
+                                        <rect key="frame" x="0.0" y="70.666666666666657" width="70" height="68.666666666666686"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="6zv-Sw-anL"/>
-                                            <constraint firstAttribute="width" constant="80" id="FR6-UZ-aG9"/>
+                                            <constraint firstAttribute="height" constant="70" id="6zv-Sw-anL"/>
+                                            <constraint firstAttribute="width" constant="70" id="FR6-UZ-aG9"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal">
@@ -62,10 +62,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rp-sH-bq3" userLabel="EditButton">
-                                        <rect key="frame" x="0.0" y="160.5" width="80" height="79"/>
+                                        <rect key="frame" x="0.0" y="140.66666666666666" width="70" height="68.666666666666686"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="JVQ-RU-Xel"/>
-                                            <constraint firstAttribute="height" constant="80" id="NN0-1R-Tx5"/>
+                                            <constraint firstAttribute="width" constant="70" id="JVQ-RU-Xel"/>
+                                            <constraint firstAttribute="height" constant="70" id="NN0-1R-Tx5"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemYellowColor"/>
                                         <state key="normal">
@@ -77,17 +77,17 @@
                                                 </hierarchicalColors>
                                             </imageReference>
                                             <imageReference key="backgroundImage" image="circle.fill" catalog="system"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="45"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                         </state>
                                         <connections>
                                             <action selector="editButtonTapped:" destination="zah-iI-EPt" eventType="touchUpInside" id="CTM-0j-skP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2U-yQ-S6O" userLabel="RecordButton">
-                                        <rect key="frame" x="0.0" y="240.5" width="80" height="79"/>
+                                        <rect key="frame" x="0.0" y="210.66666666666666" width="70" height="68.666666666666714"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="3s2-3I-LMW"/>
-                                            <constraint firstAttribute="width" constant="80" id="ug5-cU-PD7"/>
+                                            <constraint firstAttribute="height" constant="70" id="3s2-3I-LMW"/>
+                                            <constraint firstAttribute="width" constant="70" id="ug5-cU-PD7"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
@@ -105,10 +105,10 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oB9-Nz-gMv" userLabel="SaveButton">
-                                        <rect key="frame" x="0.0" y="318.5" width="80" height="81.5"/>
+                                        <rect key="frame" x="0.0" y="278.66666666666669" width="70" height="71.333333333333314"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="BGt-v3-WUM"/>
-                                            <constraint firstAttribute="width" constant="80" id="dVP-Pb-EQm"/>
+                                            <constraint firstAttribute="height" constant="70" id="BGt-v3-WUM"/>
+                                            <constraint firstAttribute="width" constant="70" id="dVP-Pb-EQm"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="square.and.arrow.down" catalog="system"/>
@@ -117,10 +117,10 @@
                                         </connections>
                                     </button>
                                     <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxm-Ez-fgM" userLabel="MapButton">
-                                        <rect key="frame" x="0.0" y="320.5" width="80" height="79"/>
+                                        <rect key="frame" x="0.0" y="280.66666666666669" width="70" height="68.666666666666686"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="5ju-WQ-DNO"/>
-                                            <constraint firstAttribute="width" constant="80" id="ptn-mx-cgV"/>
+                                            <constraint firstAttribute="height" constant="70" id="5ju-WQ-DNO"/>
+                                            <constraint firstAttribute="width" constant="70" id="ptn-mx-cgV"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal">
@@ -139,13 +139,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ozY-dg-YOd">
-                                <rect key="frame" x="842" y="34" width="170" height="50"/>
+                                <rect key="frame" x="233" y="69" width="140" height="40"/>
                                 <subviews>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kh-4C-KyP" userLabel="ProjectButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.33333333333333215" width="40" height="39.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Ekq-3J-kUL"/>
-                                            <constraint firstAttribute="height" constant="50" id="fqe-e7-0uk"/>
+                                            <constraint firstAttribute="width" constant="40" id="Ekq-3J-kUL"/>
+                                            <constraint firstAttribute="height" constant="40" id="fqe-e7-0uk"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
@@ -157,10 +157,10 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQU-H4-QFu" userLabel="LibraryButton">
-                                        <rect key="frame" x="60" y="1" width="50" height="47.5"/>
+                                        <rect key="frame" x="50" y="1.6666666666666643" width="40" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="31o-Sn-77T"/>
-                                            <constraint firstAttribute="width" constant="50" id="dBY-yb-D6S"/>
+                                            <constraint firstAttribute="height" constant="40" id="31o-Sn-77T"/>
+                                            <constraint firstAttribute="width" constant="40" id="dBY-yb-D6S"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="folder.fill" catalog="system">
@@ -171,24 +171,24 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y53-OI-O76" userLabel="MenuButton">
-                                        <rect key="frame" x="120" y="0.0" width="50" height="49.5"/>
+                                        <rect key="frame" x="100" y="0.33333333333333215" width="40" height="39.333333333333343"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="L5T-8h-ale"/>
-                                            <constraint firstAttribute="width" constant="50" id="pLI-ns-KHQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="L5T-8h-ale"/>
+                                            <constraint firstAttribute="width" constant="40" id="pLI-ns-KHQ"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlF-4H-k6I">
-                                <rect key="frame" x="16" y="44" width="31" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KlF-4H-k6I">
+                                <rect key="frame" x="16" y="79" width="31" height="14.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="012-W3-dOS" userLabel="CloseVisualization">
-                                <rect key="frame" x="431" y="1310" width="170.5" height="22"/>
+                                <rect key="frame" x="111.33333333333333" y="772" width="170.33333333333337" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Close Visualization" image="xmark.square" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oq-op-NGV" userLabel="StopCamera">
-                                <rect key="frame" x="454" y="1309" width="124.5" height="22"/>
+                                <rect key="frame" x="134.33333333333334" y="771" width="124.33333333333334" height="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Stop Camera" image="xmark.square" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -208,7 +208,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jj4-ow-MwD" userLabel="NewScanButtonLarge">
-                                <rect key="frame" x="501" y="671" width="30" height="34"/>
+                                <rect key="frame" x="181.66666666666666" y="409" width="30" height="34"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -218,7 +218,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toast Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMv-UE-cvK" userLabel="ToastLabel">
-                                <rect key="frame" x="472.5" y="1146" width="87.5" height="20.5"/>
+                                <rect key="frame" x="153" y="608" width="87.333333333333314" height="20.333333333333371"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.3002232142857143" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -228,15 +228,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infoLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LQ-Ga-w4w">
-                                <rect key="frame" x="481" y="143.5" width="70" height="20.5"/>
+                                <rect key="frame" x="161.66666666666666" y="168.66666666666666" width="69.666666666666657" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-Fk-wkN">
-                                <rect key="frame" x="416" y="94" width="200" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-Fk-wkN">
+                                <rect key="frame" x="146.66666666666666" y="119" width="100" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9hM-1U-dtk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="9hM-1U-dtk"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Title">
@@ -250,13 +250,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="H7w-58-aXD">
-                                <rect key="frame" x="952" y="1296" width="60" height="60"/>
+                                <rect key="frame" x="333" y="778" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="773-n4-lob" userLabel="ViewButton">
-                                        <rect key="frame" x="0.0" y="0.5" width="60" height="59"/>
+                                        <rect key="frame" x="0.0" y="0.66666666666666785" width="40" height="38.666666666666657"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="RqP-3j-MJT"/>
-                                            <constraint firstAttribute="width" constant="60" id="epT-x2-WRc"/>
+                                            <constraint firstAttribute="height" constant="40" id="RqP-3j-MJT"/>
+                                            <constraint firstAttribute="width" constant="40" id="epT-x2-WRc"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="eye.circle" catalog="system">
@@ -266,13 +266,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ohC-Ys-aa2" userLabel="editstackview">
-                                <rect key="frame" x="401" y="1231" width="230" height="50"/>
+                                <rect key="frame" x="96.666666666666686" y="698" width="200" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-Je-rDs" userLabel="cropButton">
-                                        <rect key="frame" x="0.0" y="1" width="50" height="49"/>
+                                        <rect key="frame" x="0.0" y="1.3333333333333321" width="40" height="38.666666666666671"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="AbQ-Aw-LEY"/>
-                                            <constraint firstAttribute="width" constant="50" id="bhf-Ef-El4"/>
+                                            <constraint firstAttribute="height" constant="40" id="AbQ-Aw-LEY"/>
+                                            <constraint firstAttribute="width" constant="40" id="bhf-Ef-El4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -284,10 +284,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26F-k9-08O" userLabel="cancelButton">
-                                        <rect key="frame" x="90" y="0.5" width="50" height="49"/>
+                                        <rect key="frame" x="79.999999999999986" y="0.66666666666666785" width="40" height="38.666666666666657"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="AnK-Zj-ZMm"/>
-                                            <constraint firstAttribute="height" constant="50" id="Zmm-oT-62r"/>
+                                            <constraint firstAttribute="width" constant="40" id="AnK-Zj-ZMm"/>
+                                            <constraint firstAttribute="height" constant="40" id="Zmm-oT-62r"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="xmark.circle" catalog="system">
@@ -298,10 +298,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L25-8c-Ju7" userLabel="editsaveButton">
-                                        <rect key="frame" x="180" y="-0.5" width="50" height="51"/>
+                                        <rect key="frame" x="160" y="-3.5527136788005009e-15" width="40" height="40.333333333333329"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="WCm-LH-9Um"/>
-                                            <constraint firstAttribute="width" constant="50" id="iI7-od-9mL"/>
+                                            <constraint firstAttribute="height" constant="40" id="WCm-LH-9Um"/>
+                                            <constraint firstAttribute="width" constant="40" id="iI7-od-9mL"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="cube.transparent.fill" catalog="system"/>
@@ -375,17 +375,17 @@
             <objects>
                 <viewController storyboardIdentifier="unsupportedDeviceMessage" id="v3G-nW-gVc" userLabel="Unsupported View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hzM-1k-POo">
-                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unsupported Device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-ct-4KD">
-                                <rect key="frame" x="43.5" y="625" width="945" height="34"/>
+                                <rect key="frame" x="21" y="352" width="351.33333333333331" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-Hw-3QU">
-                                <rect key="frame" x="43.5" y="667" width="945" height="42.5"/>
+                                <rect key="frame" x="21" y="394" width="351.33333333333331" height="64.333333333333314"/>
                                 <string key="text">Slashscan requires a LiDAR-capable device, such as the second-generation iPad Pro 11-inch and fourth-generation iPad Pro 12.9-inch.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
@@ -414,7 +414,7 @@
             <objects>
                 <viewController storyboardIdentifier="mapScene" id="880-Dp-0T2" userLabel="Map" customClass="MapViewController" customModule="SlashScan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9p-Iz-uMc">
-                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="Qj0-s3-VxQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -423,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbZ-pL-RCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191.36690647482015" y="-588.09917355371897"/>
+            <point key="canvasLocation" x="-378" y="-588"/>
         </scene>
     </scenes>
     <resources>

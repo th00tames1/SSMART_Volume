@@ -56,15 +56,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
 
     var locateButton: UIButton!
     var mapTypeButton: UIButton!
-    var addButton: UIButton!       // 암시적 언래핑 옵셔널
-    var editcoordsButton: UIButton!      // 암시적 언래핑 옵셔널
+    var addButton: UIButton!
+    var editcoordsButton: UIButton!
     var searchBar: UISearchBar!
 
     var tableView: UITableView!
     var searchCompleter: MKLocalSearchCompleter!
     var searchResults = [MKLocalSearchCompletion]()
-
-    // fileListTableView 제거
 
     var scannedFiles: [FileInfo] = []
     let geocoder = CLGeocoder()
@@ -96,7 +94,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
         setupLocateButton()
         setupMapTypeButton()
         setupAddButton()
-        setupeditcoordsButton() // 팝업 버튼 설정
+        setupeditcoordsButton()
         setupSearchBar()
         setupSearchCompleter()
         setupTableView()
@@ -108,7 +106,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
 
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
-        // 여기서 중복 delegate 설정 제거
     }
 
     func getDocumentDirectory() -> URL {
@@ -213,7 +210,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
         let circleView = UIView()
         circleView.translatesAutoresizingMaskIntoConstraints = false
         circleView.backgroundColor = .white
-        circleView.layer.cornerRadius = 20 // 반지름 30
+        circleView.layer.cornerRadius = 20 // 반지름 20
         circleView.layer.masksToBounds = true
         view.addSubview(circleView)
         
@@ -232,9 +229,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
             circleView.widthAnchor.constraint(equalToConstant: 40),
             circleView.heightAnchor.constraint(equalToConstant: 40),
             circleView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            addButton.widthAnchor.constraint(equalToConstant: 80),
-            addButton.heightAnchor.constraint(equalToConstant: 80),
+            circleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            addButton.widthAnchor.constraint(equalToConstant: 70),
+            addButton.heightAnchor.constraint(equalToConstant: 70),
             addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
@@ -466,58 +463,62 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UIGestureR
     }
 
     @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
-        // 현재 비어 있지만 동일 기능 유지를 위해 남겨둠
+        // 임시용
     }
 
+    //길게 눌러 핀포인트 생성
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             let touchPoint = gesture.location(in: mapView)
             let coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-            let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            createPinpoint(at: coordinate)
+        }
+    }
+    
+    // 핀포인트 생성 실제 함수
+    func createPinpoint(at coordinate: CLLocationCoordinate2D) {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
-            pinCount += 1
-            let pinTitle = "Pin \(pinCount)"
+        pinCount += 1
+        let pinTitle = "Pin \(pinCount)"
 
-            geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
-                guard let self = self else { return }
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            guard let self = self else { return }
 
-                if let error = error {
-                    print("Reverse geocoding failed: \(error.localizedDescription)")
-                    self.showAlert(title: "Failed to get address", message: error.localizedDescription)
-                    return
-                }
-
-                var addressString = ""
-                if let placemark = placemarks?.first {
-                    if let name = placemark.name { addressString += name }
-                    if let thoroughfare = placemark.thoroughfare { addressString += " \(thoroughfare)" }
-                    if let locality = placemark.locality { addressString += " \(locality)" }
-                    if let administrativeArea = placemark.administrativeArea { addressString += "  \(administrativeArea)" }
-                    if let country = placemark.country { addressString += " \(country)" }
-                }
-
-                let latitude = coordinate.latitude
-                let longitude = coordinate.longitude
-                let message = [
-                    "Address: \(addressString)",
-                    String(format: "Latitude: %.6f", latitude),
-                    String(format: "Longitude: %.6f", longitude)
-                ].joined(separator: "\n")
-
-                let annotation = CustomAnnotation(
-                    coordinate: coordinate,
-                    title: pinTitle,
-                    subtitle: message,
-                    isCSV: false,
-                    csvFileName: nil,
-                    altitude: nil,
-                    project: nil,
-                    name: pinTitle,
-                    volume: nil
-                )
-                self.mapView.addAnnotation(annotation)
-                self.savePinpointsToCSV()
+            if let error = error {
+                print("Reverse geocoding failed: \(error.localizedDescription)")
+                self.showAlert(title: "Failed to get address", message: error.localizedDescription)
+                return
             }
+
+            var addressString = ""
+            if let placemark = placemarks?.first {
+                if let name = placemark.name { addressString += name }
+                if let thoroughfare = placemark.thoroughfare { addressString += " \(thoroughfare)" }
+                if let locality = placemark.locality { addressString += " \(locality)" }
+                if let administrativeArea = placemark.administrativeArea { addressString += "  \(administrativeArea)" }
+                if let country = placemark.country { addressString += " \(country)" }
+            }
+
+            let message = [
+                "Address: \(addressString)",
+                String(format: "Latitude: %.6f", coordinate.latitude),
+                String(format: "Longitude: %.6f", coordinate.longitude)
+            ].joined(separator: "\n")
+
+            let annotation = CustomAnnotation(
+                coordinate: coordinate,
+                title: pinTitle,
+                subtitle: message,
+                isCSV: false,
+                csvFileName: nil,
+                altitude: nil,
+                project: nil,
+                name: pinTitle,
+                volume: nil
+            )
+            self.mapView.addAnnotation(annotation)
+            self.savePinpointsToCSV()
         }
     }
 
@@ -1132,7 +1133,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == self.tableView {
             return searchResults.count
         }
-        // fileListTableView 제거
         return 0
     }
 
@@ -1144,9 +1144,6 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = result.title
             return cell
         }
-
-        // fileListTableView 제거
-
         return UITableViewCell()
     }
 
@@ -1170,33 +1167,23 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource {
                     return
                 }
 
-                let annotationsToRemove = self.mapView.annotations.filter {
-                    if let customAnnotation = $0 as? CustomAnnotation {
-                        return !customAnnotation.isCSV
-                    }
-                    return true
-                }
-                self.mapView.removeAnnotations(annotationsToRemove)
-
                 for item in response.mapItems {
-                    let annotation = MKPointAnnotation()
-                    annotation.title = item.name
                     if let coordinate = item.placemark.location?.coordinate {
-                        annotation.coordinate = coordinate
+                        self.createPinpoint(at: coordinate)
                     }
-                    self.mapView.addAnnotation(annotation)
                 }
 
-                if let firstItem = response.mapItems.first, let coordinate = firstItem.placemark.location?.coordinate {
-                    self.mapView.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000), animated: true)
+                if let firstItem = response.mapItems.first,
+                   let coordinate = firstItem.placemark.location?.coordinate {
+                    self.mapView.setRegion(
+                        MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000),
+                        animated: true
+                    )
                 }
-
                 self.searchResults.removeAll()
                 self.tableView.reloadData()
                 self.tableView.isHidden = true
             }
         }
-
-        // fileListTableView 제거
     }
 }

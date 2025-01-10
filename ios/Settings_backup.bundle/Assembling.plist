@@ -56,7 +56,7 @@
 			<key>Key</key>
 			<string>TextureSize</string>
 			<key>DefaultValue</key>
-			<integer>4096</integer>
+			<integer>8192</integer>
 			<key>Titles</key>
 			<array>
 				<string>16384x16384</string>
@@ -158,7 +158,7 @@
 			<key>Key</key>
 			<string>MaxTextureDistance</string>
 			<key>DefaultValue</key>
-			<integer>5</integer>
+			<integer>0</integer>
 			<key>Titles</key>
 			<array>
 				<string>No Limit</string>
@@ -196,7 +196,7 @@
 			<key>Key</key>
 			<string>MinTextureClusterSize</string>
 			<key>DefaultValue</key>
-			<integer>50</integer>
+			<integer>10</integer>
 			<key>Titles</key>
 			<array>
 				<string>1000</string>
